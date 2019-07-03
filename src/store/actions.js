@@ -12,7 +12,7 @@ import {
   UPDATE_USER,
   UPDATE_DETAIL,
 }from './types'
-import Axios from 'axios';
+// import Axios from 'axios';
 
 export default {
   [VIEW_NAV]:({state,commit},payload) => commit(VIEW_NAV,payload),
@@ -22,7 +22,7 @@ export default {
   [UPDATE_HOME] : async ({state,commit},payload) => {
     let res = await axios({url:'api/home',params:{_page:1,_limit:10}});
     commit(UPDATE_HOME,res.data.data);
-    // console.log(res.data.data)
+    console.log(res.data.data)
   }, 
   [UPDATE_FOLLOW] : async ({state,commit},payload) => {
     let res = await axios({url:'api/follow',params:{_page:1,_limit:10}});
@@ -35,7 +35,7 @@ export default {
   [UPDATE_BANNER] : async ({state,commit},payload) => {
     let res = await axios({url:'api/banner',params:{_limit:3}});
     commit(UPDATE_BANNER,res.data.data);
-    // console.log(res.data.data)
+    console.log(res.data.data)
   },   
   [UPDATE_RECOMMEND] : async ({state,commit},payload) => {
     let res = await axios({url:'api/recommend',params:{_page:1,_limit:10}});

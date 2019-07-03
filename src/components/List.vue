@@ -20,6 +20,8 @@ export default {
   props:['list','dataName'],
   updated(){
   console.log("list",this.list)
+  
+  console.log("list",this.dataName)
 
   }
 }

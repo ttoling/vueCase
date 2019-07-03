@@ -17,7 +17,7 @@
       
     </div>
     <div class="content">
-      <List :list="follow" :dadaName="'follow'"></List>
+      <List :list="follow" :dataName="'follow'"></List>
     </div>
   </div>
 </template>

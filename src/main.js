@@ -17,7 +17,9 @@ import axios from './plugins/axios';
 Vue.prototype.baseUrl = require('../config/config').active;
 //引入状态管理配置
 import store from './plugins/store'
+//全局引入轮播图插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 
 new Vue({

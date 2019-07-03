@@ -27,6 +27,7 @@ axios.interceptors.response.use(function(response){
 },function(error){
   //数据请求失败，返回错误信息
   return Promise.reject(error);
+  console.log('axios',error)
 });
 
 Vue.prototype.$axios = axios;//把axios添加到Vue的父级上，在组件里面可以通过：this.$axios使用;

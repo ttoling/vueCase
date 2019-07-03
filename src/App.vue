@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div v-show="bLoading" class="loading"><img src="./assets/images/loading.gif" alt=""></div>
-    <Header v-show="bNav"></Header>
-
-    <keep-alive :exclude="['detail']">
-    <router-view></router-view>
+    <keep-alive>
+      <div v-show="bLoading" class="loading"><img src="./assets/images/loading.gif" alt=""></div>
     </keep-alive>
+    <Header v-show="bNav"></Header>
+ 
+    <router-view></router-view>
     
     <Footer v-show="bFoot"></Footer>
   </div>

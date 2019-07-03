@@ -6,8 +6,8 @@ module.exports = {
     https:'',//前后端，远端
     python:'xxx'
   },
-  // active:'http://localhost:3000'
-  active:'http://116.62.241.115:3000'
+  active:'http://localhost:3000'
+  // active:'http://116.62.241.115:3000'
 //   /* ws:{
 //     socket_local_port:'http://localhost:3000',
 //     socket_http_port:'http://47.110.139.198:80',//http://uncle9.top

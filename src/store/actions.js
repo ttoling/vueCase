@@ -12,6 +12,7 @@ import {
   UPDATE_USER,
   UPDATE_DETAIL,
 }from './types'
+import { async } from 'q';
 // import Axios from 'axios';
 
 export default {
@@ -22,7 +23,7 @@ export default {
   [UPDATE_HOME] : async ({state,commit},payload) => {
     let res = await axios({url:'api/home',params:{_page:1,_limit:10}});
     commit(UPDATE_HOME,res.data.data);
-    console.log(res.data.data)
+    // console.log(res.data.data)
   }, 
   [UPDATE_FOLLOW] : async ({state,commit},payload) => {
     let res = await axios({url:'api/follow',params:{_page:1,_limit:10}});
@@ -35,7 +36,7 @@ export default {
   [UPDATE_BANNER] : async ({state,commit},payload) => {
     let res = await axios({url:'api/banner',params:{_limit:3}});
     commit(UPDATE_BANNER,res.data.data);
-    console.log(res.data.data)
+    // console.log(res.data.data)
   },   
   [UPDATE_RECOMMEND] : async ({state,commit},payload) => {
     let res = await axios({url:'api/recommend',params:{_page:1,_limit:10}});
@@ -49,7 +50,23 @@ export default {
   [UPDATE_DETAIL] : async ({state,commit},{id,dataName}) => {
     let res = await axios({url:`/api/${dataName}/${id}`});
     commit(UPDATE_DETAIL,res.data.data);
-    console.log(dataName,id)
-    console.log(res.data.data)
+    // console.log(dataName,id)
+    // console.log(res.data.data)
   },   
+
+  [UPDATE_USER]: ({state,commit},{username,password})=>{
+    return axios({
+      url:'api/user',
+      method:'get',
+      data:{username,password,save:true}
+    }).then(
+      res=>{
+        //无论登录成功还是失败，都要把信息返回去；       
+          commit(UPDATE_USER,res.data)
+          //把user的数据同步一份到localstorage
+          localStorage.setItem('vueCase_user',JSON.stringify(res.data))
+          return res.data
+      }
+    )
+  }
 }

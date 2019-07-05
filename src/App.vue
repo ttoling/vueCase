@@ -51,8 +51,8 @@ export default {//es6的导出，可以导出函数，类，对象
   computed:mapGetters([
     'bNav','bFoot','bLoading'
   ]),
-  created(){
-
+  destroyed(){
+    
   }
 }
 </script>

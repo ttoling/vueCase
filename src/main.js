@@ -17,10 +17,20 @@ import axios from './plugins/axios';
 Vue.prototype.baseUrl = require('../config/config').active;
 //引入状态管理配置
 import store from './plugins/store'
+
+//强制刷新时同步state localStorage
+let local = JSON.parse(window.localStorage.getItem('vueCase_user'))
+if(!local) local = {err:1}
+store.commit('UPDATE_USER',local)
+
+
 //全局引入轮播图插件
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import 'swiper/dist/css/swiper.css'
-Vue.use(VueAwesomeSwiper)
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+// // import 'swiper/dist/css/swiper.css'
+// Vue.use(VueAwesomeSwiper)
+//全局引入动画样式
+import 'animate.css';
+
 
 new Vue({
   data:{

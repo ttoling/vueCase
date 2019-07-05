@@ -1,17 +1,23 @@
 <template>
   <div class="newsList">
     <ul>
-      <li v-for="(item,index) of list" :key="item._id">
-        <router-link :to="{name:'detail',params:{aid:item._id},query:{dataName:dataName}}">
-          <h2>{{index+1}}.{{item.title}}</h2>
-          <p>{{item.des}}</p>
-        </router-link>
-        <div class="meta">
-          <a href="javascript:;" class="nickname"><i><img src="../assets/img/user1.png" alt=""></i>{{item.auth}}</a>
-          <a href="javascript:;" class="comments"><i><img src="../assets/img/comment.png" alt=""></i>0</a>
-          <a href="javascript:;" class="like"><i><img src="../assets/img/like.png" alt=""></i>0</a>
-        </div>
-      </li>     
+      <transition-group
+        enter-active-class = "bounceInUp"
+        leave-active-class="bounceOutDown"
+      >
+        
+        <li class="animated" v-for="(item,index) of list" :key="item._id">
+          <router-link :to="{name:'detail',params:{aid:item._id},query:{dataName:dataName}}">
+            <h2>{{index+1}}.{{item.title}}</h2>
+            <p>{{item.des}}</p>
+          </router-link>
+          <div class="meta">
+            <a href="javascript:;" class="nickname"><i><img src="../assets/img/user1.png" alt=""></i>{{item.auth}}</a>
+            <a href="javascript:;" class="comments"><i><img src="../assets/img/comment.png" alt=""></i>0</a>
+            <a href="javascript:;" class="like"><i><img src="../assets/img/like.png" alt=""></i>0</a>
+          </div>
+        </li>     
+      </transition-group>
     </ul>
   </div>
 </template>
@@ -19,9 +25,9 @@
 export default {
   props:['list','dataName'],
   updated(){
-  console.log("list",this.list)
+  // console.log("list",this.list)
   
-  console.log("list",this.dataName)
+  // console.log("list",this.dataName)
 
   }
 }

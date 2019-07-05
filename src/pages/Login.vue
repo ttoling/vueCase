@@ -44,26 +44,22 @@ export default {
   methods:{
     
     login(){
-      console.log('登录')
-      axios({
-        url:'/api/login',
-        method:'post',
-        data:{
+      this.$store.dispatch(
+        'UPDATE_USER',
+        {
           username:this.username,
-          password:this.password,
-          save:true
-        }
-      }).then(
-        res=>{
-          if(res.data.err===0){
-            // console.log(this.data)
-            this.$router.push('/user')
-          }else{
-            this.mess = res.data.mess
-            console.log(this.mess)
+          password:this.password
+        }).then(
+          data=>{
+            if(data.err === 0){
+              this.mess = data.mess;
+              this.$router.push('/user')
+            }else{
+              this.mess = data.mess
+            }
           }
-        }
-      )
+        )
+     
     }
   }
 }

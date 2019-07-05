@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-console.log("home")
+// console.log("home")
     // 引入轮播图和list组件
     import Swiper from "../components/Swiper";
     import List from "../components/List";
@@ -18,7 +18,7 @@ console.log("home")
         this.$store.dispatch(types.UPDATE_HOME)
         this.$store.dispatch(types.UPDATE_BANNER)
         
-        console.log(this.$store.state.home,this.$store.state.banner)
+        // console.log(this.$store.state.home,this.$store.state.banner)
       },
       computed:mapGetters([
         'home','banner'

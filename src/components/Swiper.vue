@@ -1,7 +1,8 @@
 <template>
   <div class="banner" >
-    <swiper :options="swiperOption" ref="mySwiper">
-      <swiper-slide v-for="(item) of Slist" :key="item._id">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+      <div  class="swiper-slide" v-for="(item) of Slist" :key="item._id">
         
         <router-link :to="{name:'detail',params:{aid:item._id},query:{dataName:'banner'}}">
           <img :src="item.src"/>
@@ -10,34 +11,32 @@
             <p>{{item.auth}}</p>
           </div>
         </router-link>
-      </swiper-slide>
-    </swiper>
+      </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import 'swiper/dist/css/swiper.css'
-  import { swiper, swiperSlide } from 'vue-awesome-swiper'
+  import Swiper from 'swiper' 
+  import 'swiper/dist/css/swiper.css';
+  
     export default {
       name: "Swiperdetails",
       props:['Slist'],
-      data() {
-        return {
-          swiperOption: {
-            autoplay: {
-              delay: 1500,
-              // disableOnInteraction: false,//放置触摸后自动轮播停止
-            },
-            speed:400,
-            loop:true,
-            observer:true,//修改swiper自己或子元素时，自动初始化swiper
-            observeParents:true//修改swiper的父元素时，自动初始化swiper
-          },
-        }
-      },
       updated(){
-        console.log(this.Slist)
-      }
+     
+          new Swiper('.swiper-container', {
+              loop: true, // 循环模式选项
+              speed: 400,
+              autoplay: {
+                delay:1500
+              },
+              observer: true,//修改swiper自己或子元素时，自动初始化swiper
+              observeParents: true,//修改swiper的父元素时，自动初始化swiper
+            }); 
+
+      },
     }
 </script>
 

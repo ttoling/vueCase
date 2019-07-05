@@ -17,7 +17,7 @@ export default {
     'recommend'
   ]),
   updated(){
-    console.log("recommend",this.recommend)
+    // console.log("recommend",this.recommend)
   }
 }
 </script>

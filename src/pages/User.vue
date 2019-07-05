@@ -8,10 +8,10 @@
         </h3>
     </div>
     <div class="header">
-      <h2><img :src="baseUrl+data.icon"/></h2> 
+      <h2><img :src="baseUrl+$store.state.user.data.icon"/></h2> 
       <div class="user">
-        <h3>{{data.nikename}}</h3>
-        <p><span>关注</span><b>{{data.follow}}</b><span>粉丝</span><b>{{data.fans}}</b></p>
+        <h3>{{$store.state.user.data.nikename}}</h3>
+        <p><span>关注</span><b>{{$store.state.user.data.follow}}</b><span>粉丝</span><b>{{$store.state.user.data.fans}}</b></p>
       </div>
     </div>
     <div class="main">
@@ -73,6 +73,7 @@
   </div>
 </template>
 <script>
+import store from '../plugins/store'
 export default {
   data(){
     return {
@@ -98,22 +99,27 @@ export default {
     },
   },
   beforeRouteEnter(to,from,next){
-    console.log('user beforeRouteEnter')  
-    axios({
-      url:'/api/user'
-    }).then(
-      res=>{
-        if(res.data.err===1){
-          console.log(res.data)
-          next('/login')
-        }else{
-          console.log(res.data)
-          next((_this)=>{
-            _this.data=res.data.data
-          })
-        }
-      }
-    )
+    // console.log('user beforeRouteEnter')  
+    if(store.state.user.err===1){
+      next('/login')
+    }else{
+      next()
+    }
+    // axios({
+    //   url:'/api/user'
+    // }).then(
+    //   res=>{
+    //     if(res.data.err===1){
+    //       console.log(res.data)
+    //       next('/login')
+    //     }else{
+    //       console.log(res.data)
+    //       next((_this)=>{
+    //         _this.data=res.data.data
+    //       })
+    //     }
+    //   }
+    // )
   },
    
 }

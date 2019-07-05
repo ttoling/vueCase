@@ -44,7 +44,7 @@ export default {
     'detail'
   ]),
   mounted(){
-    console.log("detail",this.aid,this.dataName)
+    // console.log("detail",this.aid,this.dataName)
     let id = this.aid
     let dataName = this.dataName
     this.$store.dispatch('UPDATE_DETAIL',{id,dataName})

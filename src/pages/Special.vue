@@ -1,6 +1,14 @@
 <template>
   <div class="special">
-    <div class="img"><img src="../assets/images/1.jpg" alt=""></div>
+    <!-- <transition 
+      name="bounce"
+      enter-active-class="bounceInUp"
+      leave-active-class="bounceOutDown"
+      > -->
+        <div class="img">
+          <img src="../assets/images/1.jpg" alt="">
+        </div>
+    <!-- </transition> -->
     <div class="nav">
       <ul>
         <li>
